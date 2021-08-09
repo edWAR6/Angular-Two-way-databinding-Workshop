@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
 
+interface IArtist {
+  name: string,
+  shortname: string,
+  reknown: string,
+  bio: string
+}
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,7 +14,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   query: string;
-  artists: object;
+  artists: IArtist[];
 
   constructor() {
     this.query = 'Barot';
@@ -66,6 +73,10 @@ export class AppComponent {
         "reknown":"China International Art University",
         "bio":"A senior at the China International Art University, Xhou has become well-known for his miniature sculptures, often the size of a rice granule, that are displayed by rear projection of microscope images on canvas. Xhou will discuss the art and science behind his incredibly detailed works of art."
       }
-    ]
+    ]  
   }
+
+  showArtist(artist: IArtist) {
+    this.query = artist.name;
+  }  
 }
