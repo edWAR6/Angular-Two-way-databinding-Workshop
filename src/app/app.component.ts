@@ -4,7 +4,8 @@ interface IArtist {
   name: string,
   shortname: string,
   reknown: string,
-  bio: string
+  bio: string,
+  highlight?: boolean,
 }
 
 @Component({
@@ -78,5 +79,6 @@ export class AppComponent {
 
   showArtist(artist: IArtist) {
     this.query = artist.name;
+    artist.highlight = !artist.highlight;
   }  
 }

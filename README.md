@@ -6,19 +6,19 @@ Autor: Eduardo Oviedo Blanco
 
 Para usar este taller efectivamente, clone el código en su ambiente local.
 ```
-git clone https://github.com/edWAR6/angular-properties-workshop.git
+git clone https://github.com/edWAR6/Angular-Two-way-databinding-Workshop.git
 ```
 Si desea subir el taller en su repositorio personal.
 Cree un repositorio en su perfil, luego:
 ```
-git remote set-url origin https://github.com/<su usuario>/angular-properties-workshop.git
+git remote set-url origin https://github.com/<su usuario>/angular-two-way-databinding-workshop.git
 ```
 
 > El nombre del repositorio puede cambiar. Siga las instrucciones y guarde sus cambios.
 
 ## Propósito
 
-Este taller demuestra el uso de Angular properties.
+Este taller demuestra el uso de Angular two-way databinding.
 
 ## Instrucciones
 
@@ -28,26 +28,25 @@ Este taller demuestra el uso de Angular properties.
 ng serve
 ```
 
-2. Agregue (en la línea 25) una elemento imágen.
+2. Agregue (en la línea 11) la propiedad ngModel.
 ```html
-<div class="media">
-    <img class="mr-3 rounded align-self-center img-fluid" style="width:70px" src="" alt="">
-    <div class="media-body align-self-center">
+<input class="form-control mt-2" type="text"
+    [(ngModel)]="query">
 ```
 
-3. Haciendo uso de una expresión, agregue un src a la imágen.
-```html
-<img class="mr-3 rounded align-self-center img-fluid" style="width:70px" 
-    src="{{ './assets/images/' + artist.shortname + '_tn.jpg' }}" alt=""
->
+3. Note que hay un error y para solucionarlo incluya el módulo correspondiente en `app.module.ts`.
+
+```typescript
+import { FormsModule } from '@angular/forms';
 ```
 
-4. Ahora agregue una expresión, para el alt de la imágen.
-```html
-<img class="mr-3 rounded align-self-center img-fluid" style="width:70px" 
-    src="{{ './assets/images/' + artist.shortname + '_tn.jpg' }}"
-    alt="{{ 'Photo of ' + artist.name }}"
->
+4. También agréguelos a la lista de imports.
+```typescript
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule
+  ],
 ```
 
 > La expresión sin embargo puede ser interpretada antes de que la imagen esté cargada, lo cual genera muchos problemas.
@@ -88,7 +87,7 @@ showArtist(artist: IArtist) {
 }  
 ```
 
-# AngularProperties
+# angularTwoWayDatabinding
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.2.
 
