@@ -49,43 +49,7 @@ import { FormsModule } from '@angular/forms';
   ],
 ```
 
-> La expresión sin embargo puede ser interpretada antes de que la imagen esté cargada, lo cual genera muchos problemas.
-
-5. Cambie las expresiones por propiedades.
-```html
-<img class="mr-3 rounded align-self-center img-fluid" style="width:70px" 
-    [src]="'./assets/images/' + artist.shortname + '_tn.jpg'"
-    [alt]="'Photo of ' + artist.name"
->
-```
-
-6. Para lograr mostrar cuales items de la lista fueron seleccionados, cambie la propiedad del color de fondo al anchor.
-```html
-<a href="#" class="list-group-item list-group-item-action flex-column align-items-start"
-    *ngFor="let artist of artists"
-    (click)="showArtist(artist)"
-    [style.background]="artist.highlight ? '#eee' : '#fff'">
-```
-
-7. Note como tenemos un error debido al tipo, según la interfaz de artist. Arregle la interfaz para corregir este problema.
-
-```typescript
-interface IArtist {
-  name: string,
-  shortname: string,
-  reknown: string,
-  bio: string,
-  highlight?: boolean,
-}
-```
-
-8. Cambie la función del evento click para cambiar este valor.
-```typescript
-showArtist(artist: IArtist) {
-    this.query = artist.name;
-    artist.highlight = !artist.highlight;
-}  
-```
+> Note como ahora el query tiene un Two-way Databinding.
 
 # angularTwoWayDatabinding
 
